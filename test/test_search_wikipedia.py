@@ -5,10 +5,10 @@ from selene.support.shared import browser
 
 
 def test_search():
-    with step('Search and verify for Wikipedia'):
+    with step('Search and verify for Microsoft'):
         browser.element((AppiumBy.ACCESSIBILITY_ID, 'Search Wikipedia')).click()
         browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/search_src_text')).type(
-            'QA'
+            'Microsoft'
         )
         browser.all(
             (AppiumBy.ID, 'org.wikipedia.alpha:id/page_list_item_title')
@@ -22,3 +22,10 @@ def test_search():
         browser.all(
             (AppiumBy.ID, 'org.wikipedia.alpha:id/page_list_item_title')
         ).should(have.size_greater_than(0))
+
+
+def test_open_register_form():
+    with step('Open register form'):
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/menu_overflow_button')).click()
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/explore_overflow_account_name')).click()
+        browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/login_create_account_link')).click()
